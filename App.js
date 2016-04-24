@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Slider from './Slider';
+import ColorSlider from './ColorSlider';
 import Widget from './Widget';
 
 class App extends React.Component {
@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   updateColor(evt){
-    var { red, green, blue } = this.refs;
+    var { red, green, blue } = this.refs.color.refs;
     this.setState({
       red: ReactDOM.findDOMNode(red).value,
       green: ReactDOM.findDOMNode(green).value,
@@ -35,13 +35,12 @@ class App extends React.Component {
     };
     return (
       <div>
-        <h1 style={css}>Hola {val} {val2}</h1>
-        <h2>{st}</h2>
+        <h1>{st} {val} {val2}</h1>
         <Widget update={this.update} value={st} />
         <Widget update={this.update} value={st} />
-        <Slider ref="red" change={this.updateColor} />
-        <Slider ref="green" change={this.updateColor} />
-        <Slider ref="blue" change={this.updateColor} />
+        <ColorSlider ref="color" change={this.updateColor}>
+          <h2 style={css}>Titulito</h2>
+        </ColorSlider>
       </div>
       );
   }
