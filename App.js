@@ -1,4 +1,5 @@
 import React from 'react';
+import Widget from './Widget';
 
 class App extends React.Component {
   constructor(){
@@ -7,6 +8,7 @@ class App extends React.Component {
       stateVal: 'state val',
       another: 0
     }
+    this.update = this.update.bind(this);
   }
 
   update(evt){
@@ -20,7 +22,9 @@ class App extends React.Component {
       <div>
         <h1>Hola {val} {val2}</h1>
         <h2>{st}</h2>
-        <input onChange={this.update.bind(this)} />
+        <Widget update={this.update} value={st} />
+        <Widget update={this.update} value={st} />
+        <Widget update={this.update} value={st} />
       </div>
       );
   }
