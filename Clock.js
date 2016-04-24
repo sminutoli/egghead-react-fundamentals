@@ -7,18 +7,22 @@ const Component = React.createClass({
       };
   },
   componentDidMount(){
-    this.interval = setInterval(this.updateMoment, 500);
+    this.interval = setInterval(this.updateMoment, 1000);
   },
   componentWillUnmount(){
     clearInterval(this.interval);
   },
   updateMoment(){
-    console.log('updateMoment called');
+    //console.log('updateMoment called');
     this.setState( {
       moment: new Date() 
     })
   },
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.moment != nextState.moment;
+  },
   render(){
+    console.log('Clock render called');
     var h = this.state.moment.getHours();
     var m = this.state.moment.getMinutes();
     var s = this.state.moment.getSeconds();

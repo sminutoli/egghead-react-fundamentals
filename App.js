@@ -33,7 +33,7 @@ class App extends React.Component {
       blue: ReactDOM.findDOMNode(blue).value
     });
   }
-
+  
   render(){
     var { val, val2 } = this.props;
     var { stateVal:st, red, green, blue, clock } = this.state;
